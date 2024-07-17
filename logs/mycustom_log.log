@@ -1,0 +1,5 @@
+2024-07-17 13:14:05,510-views.py-LoggingExample-DEBUG-10-44-Debug : I just entered into the view..2024-07-17 13:14:05.510479
+2024-07-17 13:14:05,511-views.py-LoggingExample-INFO-20-45-Info : Confirmation that things are working as expected.
+2024-07-17 13:14:05,511-views.py-LoggingExample-WARNING-30-46-Warning : An incident that something unexpected happened
+2024-07-17 13:14:05,511-views.py-LoggingExample-ERROR-40-47-Error : Due to a more serious problem, the software has not been able to perform some function.
+2024-07-17 13:14:05,512-views.py-LoggingExample-CRITICAL-50-48-Critical : A serious error, indicating that the program itself may be unable to continue running.

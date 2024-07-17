@@ -1,4 +1,6 @@
 import datetime
+import logging
+from datetime import datetime, date
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -30,3 +32,19 @@ def ShowDateTime(request):
     templatefilename = "basic/Showtimeinfo.html"
     dict = {'TodayDate':TodayDate}
     return render(request, templatefilename, dict)
+
+def LoggingExample(request):
+    logging.debug(f"Debug : I just entered into the view..{datetime.now()}")
+    logging.info(f"Info : Confirmation that things are working as expected.")
+    logging.warning(f"Warning : An incident that something unexpected happened")
+    logging.error(f"Error : Due to a more serious problem, the software has not been able to perform some function.")
+    logging.critical(f"Critical : A serious error, indicating that the program itself may be unable to continue running.")
+
+    custom_logger = logging.getLogger('mycustom_logger')
+    custom_logger.debug(f"Debug : I just entered into the view..{datetime.now()}")
+    custom_logger.info(f"Info : Confirmation that things are working as expected.")
+    custom_logger.warning(f"Warning : An incident that something unexpected happened")
+    custom_logger.error(f"Error : Due to a more serious problem, the software has not been able to perform some function.")
+    custom_logger.critical(f"Critical : A serious error, indicating that the program itself may be unable to continue running.")
+    
+    return HttpResponse("Logging Demo")

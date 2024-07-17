@@ -7,4 +7,5 @@ urlpatterns = [
     path('usevar', views.UseVariableAsResponse, name='usevar'),
     path('getrequest', views.GetRequestVariable, name='getrequest'),
     path('showtime', views.ShowDateTime, name='showtime'),
+    path('logging', views.LoggingExample, name='logging'),
 ]
