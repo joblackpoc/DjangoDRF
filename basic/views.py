@@ -1,8 +1,7 @@
-from django.shortcuts import render
-
+import datetime
 # Create your views here.
 from django.http import HttpResponse
-
+from django.shortcuts import render
 def Home(request):
     return HttpResponse("<h1>Hello world from Django 5!</h1>")
 
@@ -25,3 +24,9 @@ def GetRequestVariable(request):
         else:
             Message = "You haven't supplied a message paremeter yet."
     return HttpResponse(Message)
+
+def ShowDateTime(request):
+    TodayDate = datetime.datetime.now()
+    templatefilename = "basic/Showtimeinfo.html"
+    dict = {'TodayDate':TodayDate}
+    return render(request, templatefilename, dict)

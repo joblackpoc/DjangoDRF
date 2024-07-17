@@ -6,4 +6,5 @@ urlpatterns = [
     path('showmore',views.Showmoremessage, name='showmore'),
     path('usevar', views.UseVariableAsResponse, name='usevar'),
     path('getrequest', views.GetRequestVariable, name='getrequest'),
+    path('showtime', views.ShowDateTime, name='showtime'),
 ]
