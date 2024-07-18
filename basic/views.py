@@ -48,3 +48,28 @@ def LoggingExample(request):
     custom_logger.critical(f"Critical : A serious error, indicating that the program itself may be unable to continue running.")
     
     return HttpResponse("Logging Demo")
+
+def iftagdemo(request):
+    data = {'name':'Jimmy Anderson', 'isVisible':True, 'login':False,'CountryCode':'IN', 'workExperience':15 }
+    templatefilename = 'basic/Iftagdemo.html'
+    dict = {"Data":data}
+    return render(request, templatefilename, dict)
+
+def ShowProducts(request):
+    Processors = [{'Category':'AMD', 'processors':['Ryzen 3990', 'Ryzen 3970', 'Ryzen 3950']},
+                  {'Category':'Intel', 'processors':['Xeon 8362', 'Xeon 8358', 'Xeon 8380']}
+                  ]
+    Products=[]
+    Products.append({'productID':1, 'productName':'AMD Ryzen 3990', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':3000})
+    Products.append({'productID':2, 'productName':'AMD Ryzen 3980', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':4000})
+    Products.append({'productID':3, 'productName':'AMD Ryzen 3970', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':5000})
+    Products.append({'productID':4, 'productName':'AMD Ryzen 3960', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':6000})
+    Products.append({'productID':5, 'productName':'AMD Ryzen 3950', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':7000})
+    Products.append({'productID':6, 'productName':'AMD Ryzen 3940', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':8000})
+    Products.append({'productID':7, 'productName':'AMD Ryzen 3930', 'quantity':100, 'unitInStock':50, 'disContinued':False, 'cost':9000})
+    Products.append({'productID':8, 'productName':'AMD Ryzen 3920', 'quantity':100, 'unitInStock':50, 'disContinued':True, 'cost':10000})
+    Products.append({'productID':9, 'productName':'AMD Ryzen 3910', 'quantity':100, 'unitInStock':50, 'disContinued':True, 'cost':11000})
+    Products.append({'productID':10, 'productName':'AMD Ryzen 3900', 'quantity':100, 'unitInStock':50, 'disContinued':True, 'cost':12000})
+    TemplateFile = 'basic/Showproducts.html'
+    dict = {'Products':Products, 'TotalProducts':len(Products), 'Processors':Processors }
+    return render(request, TemplateFile, dict)

@@ -8,4 +8,6 @@ urlpatterns = [
     path('getrequest', views.GetRequestVariable, name='getrequest'),
     path('showtime', views.ShowDateTime, name='showtime'),
     path('logging', views.LoggingExample, name='logging'),
+    path('iftag', views.iftagdemo, name='iftag'),
+    path('showproducts', views.ShowProducts, name='showproducts'),
 ]
