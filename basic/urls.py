@@ -14,4 +14,6 @@ urlpatterns = [
     path('showproducts', views.ShowProducts, name='showproducts'),
     path('loadusers', views.LoadUsers, name='loadusers'),
     path('loadusers2', views.LoadUsers2, name='loadusers2'),
+    path('showuserdetails', views.LoadUserDetails, name='showuserdetails'),
+
 ]

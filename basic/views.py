@@ -94,3 +94,16 @@ def LoadUsers2(request):
 
 def Index(request):
     return render(request, 'basic/Index.html')
+
+def CallRestAPI2(userid):
+    BASE_URL = 'https://fakestoreapi.com'
+    reponse = requests.get(f'{BASE_URL}/users/{userid}')
+    return(reponse)
+
+def LoadUserDetails(request):
+    templatefilename = 'basic/Showuserdetails.html'
+    counter = 1
+    response = CallRestAPI2(counter)
+    image = 'https://i.pravatar.cc'
+    dict = {'user':response.json(), 'image':image}
+    return render(request, templatefilename, dict)
