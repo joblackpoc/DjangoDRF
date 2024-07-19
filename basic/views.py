@@ -1,5 +1,6 @@
 import datetime
 import logging
+import requests
 from datetime import datetime, date
 # Create your views here.
 from django.http import HttpResponse
@@ -28,7 +29,7 @@ def GetRequestVariable(request):
     return HttpResponse(Message)
 
 def ShowDateTime(request):
-    TodayDate = datetime.datetime.now()
+    TodayDate = datetime.now()
     templatefilename = "basic/Showtimeinfo.html"
     dict = {'TodayDate':TodayDate}
     return render(request, templatefilename, dict)
@@ -73,3 +74,23 @@ def ShowProducts(request):
     TemplateFile = 'basic/Showproducts.html'
     dict = {'Products':Products, 'TotalProducts':len(Products), 'Processors':Processors }
     return render(request, TemplateFile, dict)
+
+def LoadUsers(request):
+    templatefilename = 'basic/Showusers.html'
+    response = CallRestAPI()
+    dict = {'users':response.json()}
+    return render(request, templatefilename, dict)
+def CallRestAPI():
+    BASE_URL = 'https://fakestoreapi.com'
+    response = requests.get(f'{BASE_URL}/users')
+    return(response)
+
+def LoadUsers2(request):
+    templatefilename = 'basic/ShowusersAsCard.html'
+    image = 'https://i.pravatar.cc'
+    response = CallRestAPI()
+    dict = {'users':response.json(), 'image':image}
+    return render(request, templatefilename, dict)
+
+def Index(request):
+    return render(request, 'basic/Index.html')
