@@ -1,10 +1,9 @@
 import datetime
 import logging
 import requests
-from datetime import datetime, date
-# Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
+from basic.models import Authors
 def Home(request):
     return HttpResponse("<h1>Hello world from Django 5!</h1>")
 
@@ -101,9 +100,68 @@ def CallRestAPI2(userid):
     return(reponse)
 
 def LoadUserDetails(request):
+    if request.method == 'POST':
+        counter = int(request.POST.get('useridcounter'))
+        if(request.POST.get('btnNext')):
+            counter = counter + 1
+            if counter >= 11:
+                counter = 1
+        elif(request.POST.get('btnPrevious')):
+            counter = counter - 1
+            if counter == 0:
+                counter = 1
+    else:
+        counter = 1
+
     templatefilename = 'basic/Showuserdetails.html'
-    counter = 1
     response = CallRestAPI2(counter)
     image = 'https://i.pravatar.cc'
     dict = {'user':response.json(), 'image':image}
     return render(request, templatefilename, dict)
+
+def PassModelToTemplate(request):
+    #instantiated model class object
+    obj = Authors('Chad Mendis', 'USA', 'UFC')
+    templatefilename = 'basic/Passmodel.html'
+
+    AuthorsList = []
+    AuthorsList.append(Authors('Lesnor', 'USA', 'UFC'))
+    AuthorsList.append(Authors('Nate Diaz', 'USA', 'Comics'))
+    AuthorsList.append(Authors('Nick Diaz', 'USA', 'Comissions'))
+    AuthorsList.append(Authors('Johnson', 'USA', 'Disruptions'))
+    AuthorsList.append(Authors('John Doe', 'Lao', 'Titans'))
+    AuthorsList.append(Authors('Connors', 'Liverpool', 'Aladin'))
+    AuthorsList.append(Authors('Brown', 'Asenol', 'Jurassic'))
+    AuthorsList.append(Authors('Jackson', 'Thailand', 'UFC'))
+    AuthorsList.append(Authors('Mavel', 'British', 'UFC'))
+    AuthorsList.append(Authors('Loard Budha', 'India', 'UFC'))
+
+    dict = {'Author':obj, 'Authors':AuthorsList}
+    return render(request, templatefilename, dict)
+
+def BuiltInFiltersDemo(request):
+    Processor=[
+        {'name':'Ryzen 3970', 'cores':32},
+        {'name':'Ryzen 3950', 'cores':16},
+        {'name':'Ryzen 3990', 'cores':64},
+    ]
+
+    dict = {
+        'ProbationPeriod':4,
+        'FirstName':'Connors',
+        'LastName':'McGregor',
+        'PayForFight':123456,
+        'FirstQuarter':['Jan', 'Feb', 'Mar'],
+        'SecondQuarter':['Apr', 'May', 'Jun'],
+        'FQuarter':[1,2,3],
+        'SQuarter':[4,5,6],
+        'AboutMe':'i am notorious and i am ruthless too!',
+        'now':datetime.datetime.now(),
+        'PreviousFight':'',
+        'NextFight':None,
+        'Processors':Processor,
+        'Message':'<h1>I am using escape</h1>',
+        'Website':'https://www.uiacademy.co.in',
+    }
+
+    return render(request, 'basic/Bifdemo.html', dict)
