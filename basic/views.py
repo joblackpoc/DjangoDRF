@@ -28,7 +28,7 @@ def GetRequestVariable(request):
     return HttpResponse(Message)
 
 def ShowDateTime(request):
-    TodayDate = datetime.now()
+    TodayDate = datetime.datetime.now()
     templatefilename = "basic/Showtimeinfo.html"
     dict = {'TodayDate':TodayDate}
     return render(request, templatefilename, dict)
@@ -165,3 +165,12 @@ def BuiltInFiltersDemo(request):
     }
 
     return render(request, 'basic/Bifdemo.html', dict)
+
+def CustomFiltersDemo(request):
+    webframeworks = {
+        'Description':'Django is a Python framework that makes it easier to create dynamic websites',
+        'Indemand':'4.8',
+        'PollNumber':57650,
+
+    }
+    return render(request, 'basic/Testcustomfilter.html', webframeworks)

@@ -1,0 +1,15 @@
+{% extends "basic/Layout.html" %}
+{% load customfilters %}
+{% block body_block %}
+
+    <h1>Customfilters</h1>
+    <ul>
+        <li>Course Description : {{Description|firstfiveupper}}</li>
+        <li>Course Description : {{Description|firstfiveupper | lower}}</li>
+        <li>Course Description : {{Description|firstnupper:10}}</li>
+        <li>Course Description : {{Description|lengthlimit:20}}</li>
+        <li>InDemand : {{Indemand | rating}}</li>
+        <li>PollNumber: {{PollNumber}} i.e. ({{PollNumber | convertnumbertowords}})</li>
+    </ul>
+
+{% endblock %}
