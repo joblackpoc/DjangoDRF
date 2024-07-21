@@ -82,15 +82,7 @@ DATABASES = {
 #     }
 # }
     'default':{
-        'ENGINE': 'mssql',
-        'NAME': 'dbpayroll',
-        'USER': '',
-        'PASSWORD': 'sa',
-        'HOST': 'MasterPOP',
-        'PORT': '',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
+        'ENGINE'
     }
 }
 
