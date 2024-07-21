@@ -82,10 +82,19 @@ DATABASES = {
 #     }
 # }
     'default':{
-        'ENGINE'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'dbpayroll',
+        'USER':'adminpoc',
+        'PASSWORD':'123456',
+        'HOST':'localhost',
+        'PORT':'3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+
+        }   
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
