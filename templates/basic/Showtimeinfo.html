@@ -10,8 +10,9 @@
 </head>
 <body> {% endcomment %}
 {% block body_block %}
+<div class="container">
     <h1>Server Time is {{TodayDate}}</h1>
-    <table class="table table">
+    <table class="table">
         <thead>
             <tr>
                 <td>Day</td>
@@ -30,6 +31,8 @@
             <td>{{ TodayDate | date:'i'}}</td>
             <td>{{ TodayDate | date:'s'}}</td>
         </tr>
+    </table>
+</div>
 {% endblock %}
 {% comment %} </body>
 </html> {% endcomment %}

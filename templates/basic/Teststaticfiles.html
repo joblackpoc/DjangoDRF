@@ -1,0 +1,16 @@
+{% extends "basic/Layout.html" %}
+{% load static %}
+{% block body_block %}
+    <table class="table">
+        
+        <thead>
+            <td>
+                Working with Static Files
+            </td>
+        </thead>
+        <tr>
+            <td><img src=" {% static 'images/clouddb.jpg' %}" alt="Cloud DB" width="50%"></td>
+            <td><img src=" {% static 'images/Community.jpg' %}" alt="Community" width="50%"></td>
+        </tr>
+    </table>
+{% endblock %}

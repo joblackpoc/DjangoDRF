@@ -174,3 +174,6 @@ def CustomFiltersDemo(request):
 
     }
     return render(request, 'basic/Testcustomfilter.html', webframeworks)
+
+def TestStaticFiles(request):
+    return render(request, 'basic/Teststaticfiles.html')
