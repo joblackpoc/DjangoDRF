@@ -145,40 +145,40 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGGING_DIR = os.path.join(BASE_DIR, 'logs')
-if not os.path.exists(LOGGING_DIR):
-    os.makedirs(LOGGING_DIR)
+# LOGGING_DIR = os.path.join(BASE_DIR, 'logs')
+# if not os.path.exists(LOGGING_DIR):
+#     os.makedirs(LOGGING_DIR)
 
-LOGGING = {
-    "version":1,
-    "disable_existing_loggers": False,
-    "formatters":{
-        "verbose":{
-            'format':'{asctime}-{filename}-{funcName}-{levelname}-{levelno}-{lineno}-{message}',
-            'style': '{',
-        }
-    },
-    "handlers":{
-        "console":{
-            "class": "logging.StreamHandler",
-            'formatter':'verbose',
-        },
-        'mycustom_log':{
-            'level':'DEBUG',
-            'class':'logging.FileHandler',
-            'filename': os.path.join(LOGGING_DIR, 'mycustom_log.log'),
-            'formatter':'verbose',
-        }
-    },
-    "root":{
-        "handlers": ["console"],
-        "level": "DEBUG",
-    },
-    'loggers':{
-        'mycustom_logger':{
-            'handlers': ['mycustom_log'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    }
-}
+# LOGGING = {
+#     "version":1,
+#     "disable_existing_loggers": False,
+#     "formatters":{
+#         "verbose":{
+#             'format':'{asctime}-{filename}-{funcName}-{levelname}-{levelno}-{lineno}-{message}',
+#             'style': '{',
+#         }
+#     },
+#     "handlers":{
+#         "console":{
+#             "class": "logging.StreamHandler",
+#             'formatter':'verbose',
+#         },
+#         'mycustom_log':{
+#             'level':'DEBUG',
+#             'class':'logging.FileHandler',
+#             'filename': os.path.join(LOGGING_DIR, 'mycustom_log.log'),
+#             'formatter':'verbose',
+#         }
+#     },
+#     "root":{
+#         "handlers": ["console"],
+#         "level": "DEBUG",
+#     },
+#     'loggers':{
+#         'mycustom_logger':{
+#             'handlers': ['mycustom_log'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     }
+# }
