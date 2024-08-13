@@ -25,3 +25,5 @@ urlpatterns = [
     path('crud/', include('crud.urls')),
     path('', include('company.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+admin.site.site_header = 'สาธารณสุขอำเภอเมืองชุมพร'
+admin.site.index_title = 'ยินดีต้อนรับสู่ระบบเว็บแอพพลิเคชั่น'
